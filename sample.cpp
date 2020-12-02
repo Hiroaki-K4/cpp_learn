@@ -6,44 +6,21 @@
 using namespace std;
 
 
-class date {
-	int day, month, year;
-public:
-	date(char *str);
-	date(int m, int d, int y) {
-		day = d;
-		month = m;
-		year = y;
-	}
-	date(time_t t);
-	void show() {
-		cout << month << '/' << day << '/';
-		cout << year << endl;
-	}
-};
-
-date::date(char *str)
+char reverse(char *str, int count = 2)
 {
-	sscanf(str, "%d%*c%d%*c%d", &month, &day, &year);
-}
+	int i;
 
-date::date(time_t t)
-{
-	struct tm *p;
-
-	p = localtime(&t);
-	day = p->tm_mday;
-	month = p->tm_mon;
-	year = p->tm_year;
+	for (i = 0; i < count; i++) {
+		
+	}
 }
 
 int main()
 {
-	date sdate("12/31/99");
-	date idate(12, 31, 99);
-	date tdate(time(NULL));
-	sdate.show();
-	idate.show();
-	tdate.show();
-	return 0;
+	char *str;
+	int count;
+
+	str = "abcde";
+	count = 5;
+	cout << reverse(str, count) << endl;;
 }
