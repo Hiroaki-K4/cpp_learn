@@ -6,56 +6,22 @@
 using namespace std;
 
 
-class strtype {
-	char *p;
-	int len;
+class dynarray {
+	int *p;
+	int size;
 public:
-	strtype(char *s);
-	~strtype() {
-		cout << p << "を解放する" << endl;
-		delete [] p;
-	}
-	char *get() { return p; }
-	strtype &operator=(strtype &ob);
+	dynarray(int s);
+	int &put(int i);
+	int get(int i);
 };
 
-strtype::strtype(char *s)
+dynarray::dynarray(int s)
 {
-	int l;
-
-	l = strlen(s) + 1;
-	p = new char [l];
+	p = new int [s];
 	if (!p) {
 		cout << "メモリ割り当てエラー" << endl;
 		exit(1);
 	}
-	len = l;
-	strcpy(p, s);
+	size = s;
 }
 
-strtype &strtype::operator=(strtype &ob)
-{
-	if (len < ob.len) {
-		delete [] p;
-		p = new char [ob.len];
-		if (!p) {
-			cout << "メモリ割り当てエラー" << endl;
-			exit(1);
-		}
-	}
-	len = ob.len;
-	strcpy(p, ob.p);
-	return *this;
-}
-
-int main()
-{
-	strtype a("Hello"), b("There");
-	cout << a.get() << endl;
-	cout << b.get() << endl;
-
-	a = b;
-	cout << a.get() << endl;
-	cout << b.get() << endl;
-	return 0;
-}
