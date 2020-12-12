@@ -15,19 +15,13 @@ public:
 		int i;
 		for (i = 0; i < SIZE; i++) a[i] = i;
 	}
-	int &operator[] (int i) { return a[i]; }
+	int operator[] (int i) { return a[i]; }
 };
 
 int main()
 {
 	arraytype ob;
 	int i;
-
-	for (i = 0; i < SIZE; i++)
-		cout << ob[i] << endl;
-
-	for (i = 0; i < SIZE; i++)
-		ob[i] = ob[i] + 10;
 
 	for (i = 0; i < SIZE; i++)
 		cout << ob[i] << endl;
