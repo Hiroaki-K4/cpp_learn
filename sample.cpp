@@ -18,13 +18,11 @@ public:
 	{
 		i = x; j = y; k = z;
 	}
-	three_d operator+(three_d &ob);
-	three_d operator-(three_d &ob);
-	friend three_d operator++(three_d &ob);
-	friend three_d operator--(three_d &ob);
+	three_d operator+(three_d ob);
+	three_d operator+(int i);
 };
 
-three_d three_d::operator+(three_d &ob)
+three_d three_d::operator+(three_d ob)
 {
 	three_d temp;
 
@@ -35,34 +33,18 @@ three_d three_d::operator+(three_d &ob)
 	return temp;
 }
 
-three_d three_d::operator-(three_d &ob)
+three_d three_d::operator+(int i)
 {
 	three_d temp;
 
-	temp.x = x - ob.x;
-	temp.y = y - ob.y;
-	temp.z = z - ob.z;
+	temp.x = x + i;
+	temp.y = y + i;
+	temp.z = z + i;
 
 	return temp;
 }
 
-three_d operator++(three_d &ob)
-{
-	ob.x++;
-	ob.y++;
-	ob.z++;
 
-	return ob;
-}
-
-three_d operator--(three_d &ob)
-{
-	ob.x--;
-	ob.y--;
-	ob.z--;
-
-	return ob;
-}
 
 int main()
 {
@@ -73,17 +55,5 @@ int main()
 	o3.get(a, b, c);
 	cout << "(o1 + o2) X: " << a << " Y: " << b << " Z: " << c << endl;
 	
-	o3 = o1 - o2;
-	o3.get(a, b, c);
-	cout << "(o1 - o2) X: " << a << " Y: " << b << " Z: " << c << endl;
-
-	++o1;
-	o1.get(a, b, c);
-	cout << "(++o1) X: " << a << " Y: " << b << " Z: " << c << endl;
-	
-	--o2;
-	o2.get(a, b, c);
-	cout << "(--o2) X: " << a << " Y: " << b << " Z: " << c << endl;
-
 	return 0;
 }
