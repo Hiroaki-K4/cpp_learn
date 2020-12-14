@@ -35,7 +35,7 @@ int three_d::operator!=(three_d ob)
 
 int three_d::operator||(three_d ob)
 {
-	return (x || ob.x) || (y || ob.y);
+	return (x || ob.x) && (y || ob.y) && (z || ob.z);
 }
 
 int main()
