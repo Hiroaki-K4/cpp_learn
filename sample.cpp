@@ -6,51 +6,28 @@
 using namespace std;
 
 
-class three_d {
-	int x, y, z;
+class strtype {
+	char s[80];
 public:
-	three_d(int i, int j, int k)
-	{
-		x = i; y = j; z = k;
-	}
-	three_d() { x = 0; y = 0; z = 0; }
-	void get(int &i, int &j, int &k)
-	{
-		i = x; j = y; k = z;
-	}
-	int operator==(three_d ob);
-	int operator!=(three_d ob);
-	int operator||(three_d ob);
+	strtype(char *word) { strcpy(s, word); }
+	strtype() { *s = '\0'; }
+	strtype operator+(strtype ob);
 };
 
-int three_d::operator==(three_d ob)
+strtype strtype::operator+(strtype ob)
 {
-	return x == ob.x && y == ob.y && z == ob.z;
-}
+	strtype temp;
+	temp.s = strcpy(temp.s, s);
+	temp.s = strcat(temp.s, ob.s);
 
-int three_d::operator!=(three_d ob)
-{
-	return x != ob.x || y == ob.y || z == ob.z;
-}
-
-int three_d::operator||(three_d ob)
-{
-	return (x || ob.x) && (y || ob.y) && (z || ob.z);
+	return temp;
 }
 
 int main()
 {
-	three_d o1(10, 10, 10), o2(1, 1, 1), o3;
-	int a, b, c;
-
-	if (o1 == o2) cout << "yes" << endl;
-	else cout << "no" << endl;
-	
-	if (o1 != o2) cout << "yes" << endl;
-	else cout << "no" << endl;
-
-	if (o1 || o2) cout << "yes" << endl;
-	else cout << "no" << endl;
-
+	char s1[80] = "Hello"
+	strtype test(s1), ans;
+	ans = test + "World";
+	cout << ans << endl;
 	return 0;
 }
