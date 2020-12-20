@@ -20,7 +20,7 @@ public:
 class derived : public base {
 	int j;
 public:
-	derived(int n) : base(n) {
+	derived(int n, int m) : base(m) {
 		cout << "derivedクラスのコンストラクタ呼び出し" << endl;
 		j = n;
 	}
@@ -30,7 +30,7 @@ public:
 
 int main()
 {
-	derived o(10);
+	derived o(10, 20);
 	o.showi();
 	o.showj();
 	return 0;
