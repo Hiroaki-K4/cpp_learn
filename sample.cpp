@@ -13,13 +13,19 @@ public:
 };
 
 class derived : public base {
+	int j;
 public:
-	derived() { cout << "derivedクラスのコンストラクタ呼び出し" << endl; }
+	derived(int n) {
+		cout << "derivedクラスのコンストラクタ呼び出し" << endl;
+		j = n;
+	}
 	~derived() { cout << "derivedクラスのデストラクタ呼び出し" << endl; }
+	void showj() { cout << j << endl; }
 };
 
 int main()
 {
-	derived o;
+	derived o(10);
+	o.showj();
 	return 0;
 }
