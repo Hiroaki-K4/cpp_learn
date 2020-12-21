@@ -6,55 +6,41 @@
 using namespace std;
 
 
-class vehicle {
-	int num_wheels;
-	int range;
+class B1 {
+	int a;
 public:
-	vehicle(int w, int r)
-	{
-		num_wheels = w; range = r;
-	}
-	void showv()
-	{
-		cout << "車輪の数: " << num_wheels << endl;
-		cout << "走行距離: " << range << endl;
-	}
+	B1(int x) { a = x; }
+	int geta() { return a; }
 };
 
-class car : public vehicle {
-	int passengers;
+class D1 : public B1 {
+	int b;
 public:
-	car(int a, int b, int c) : vehicle(b, c) {
-		passengers = a;
+	D1(int x, int y) : B1(y)
+	{
+		b = x;
+	}
+	int getb() { return b; }
+};
+
+class D2 : public D1 {
+	int c;
+public:
+	D2(int x, int y, int z) : D1(y, z)
+	{
+		c = x;
 	}
 	void show()
 	{
-		showv();
-		cout << "乗客定員: " << passengers << endl;
-	}
-};
-
-class truck : public vehicle {
-	int loadlimit;
-public:
-	truck(int a, int b, int c) : vehicle(b, c) {
-		loadlimit = a;
-	}
-	void show()
-	{
-		showv();
-		cout << "積載量: " << loadlimit << endl;
+		cout << geta() << ' ' << getb() << ' ';
+		cout << c << endl;
 	}
 };
 
 int main()
 {
-	car c(5, 4, 500);
-	truck t(30000, 12, 1200);
-
-	cout << "乗用車: " << endl;
-	c.show();
-	cout << "トラック: " << endl;
-	t.show();
+	D2 ob(1, 2, 3);
+	ob.show();
+	cout << ob.geta() << ' ' << ob.getb() << endl;
 	return 0;
 }
