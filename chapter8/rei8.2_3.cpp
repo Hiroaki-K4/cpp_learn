@@ -10,8 +10,7 @@ void showflags();
 int main()
 {
 	showflags();
-	ios::fmtflags f = ios::showpos | ios::showbase | ios::oct | ios::right;
-	cout.flags(f);
+	cout.setf(ios::oct | ios::showbase | ios::fixed);
 	cout << "----------------------------" << endl;
 	showflags();
 	return 0;
