@@ -9,10 +9,15 @@ using namespace std;
 
 int main()
 {
-	cout << hex << 100 << endl;
-	cout << oct << 10 << endl;
+	double x;
 
-	cout << setfill('x') << setw(10);
-	cout << 100 << " hi " << endl;
+	cout << setprecision(4);
+	cout << "      x  sqrt(x)     x**2" << endl;
+
+	for (x = 2.0; x <= 20.0; x++) {
+		cout << setw(7) << x << "  ";
+		cout << setw(7) << sqrt(x) << "  ";
+		cout << setw(7) << x*x << endl;
+	}
 	return 0;
 }
