@@ -6,7 +6,7 @@
 #include <ctime>
 using namespace std;
 
-
+// 例の方やってる
 int main()
 {
 	cout << setw(10) << "hello" << endl;
