@@ -18,16 +18,15 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 
-	ofstream out(argv[1], ios::out | ios::binary);
-	if (!out) {
+	ifstream in(argv[1], ios::in | ios::binary);
+	if (!in) {
 		cout << "ファイルが開けません\n";
 		return 1;
 	}
-	cout << "$で入力を終了します\n";
-	do {
-		cin.get(ch);
-		out.put(ch);
-	} while (ch != '$');
-	out.close();
+	while (!in.eof()) {
+		in.get(ch);
+		cout << ch;
+	}
+	in.close();
 	return 0;
 }
