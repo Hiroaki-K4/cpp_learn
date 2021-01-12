@@ -28,6 +28,7 @@ int main(int argc, char *argv[])
 		}
 	}
 	fin.close();
+	cout << "hello" << endl;
 	cout << count << endl;
 	return 0;
 }
