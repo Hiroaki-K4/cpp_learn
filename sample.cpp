@@ -10,29 +10,34 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    char ch;
-
     if (argc != 2) {
-        cout << "使い方: DISPLAY <ファイル名>\n";
+        cout << "使い方: LOCATE <ファイル名>\n";
         return 1;
     }
 
-    ifstream in(argv[1]);
+    ifstream in(argv[1], ios::in | ios::binary);
 
     if (!in) {
         cout << "入力ファイルが開けません\n";
         return 1;
     }
 
-    while (!in.eof()) {
-        in.get(ch);
-        if (!in.good() && !in.eof()) {
-            cout << "入出力エラー\n";
-            return 1;
-        }
-        cout << ch;
-    }
+    in.seekg(0, ios::end);
+    if (!in.good()) return 1;
 
+	char ch;
+	long i;
+	i = (long) in.tellg();
+    if (!in.good()) return 1;
+	i -= 2;
+
+    for ( ; i >= 0; i--) {
+		in.seekg(i, ios::beg);
+        if (!in.good()) return 1;
+		in.get(ch);
+        if (!in.good()) return 1;
+		cout << ch;
+	}
     in.close();
-    return 0;
+    return 1;
 }
