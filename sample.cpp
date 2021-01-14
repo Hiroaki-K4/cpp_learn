@@ -8,39 +8,50 @@
 using namespace std;
 
 
-int main(int argc, char *argv[])
-{
-    if (argc != 2) {
-        cout << "使い方: LOCATE <ファイル名>\n";
-        return 1;
-    }
+class coord {
+    int x, y;
+public:
+    coord(int i, int j) { x = i; y = j; }
+    friend ostream &operator<<(ostream &stream, coord ob);
+    friend istream &operator>>(istream &stream, coord &ob);
+};
 
-    fstream out(argv[1], ios::in | ios::out | ios::binary);
+ostream &operator<<(ostream &stream, coord ob)
+{
+    stream << ob.x << ' ' << ob.y << ' ' << endl;
+    return stream;
+}
+
+istream &operator>>(istream &stream, coord &ob)
+{
+    stream >> ob.x >> ob.y;
+    return stream;
+}
+
+int main()
+{
+    coord o1(1, 2), o2(3, 4);
+
+    ofstream out("test");
 
     if (!out) {
-        cout << "ファイルが開けません\n";
+        cout << "出力ファイルが開けません\n";
         return 1;
     }
 
-    char ch1, ch2;
-    long i;
-
-    for (i = 0; !out.eof(); i+=2) {
-        out.seekg(i, ios::beg);
-        if (!out.good()) return 1;
-        out.get(ch1);
-        if (!out.good()) return 1;
-        if (out.eof()) continue;
-        out.get(ch2);
-        if (!out.good()) return 1;
-        if (out.eof()) continue;
-        out.seekg(i, ios::beg);
-        if (!out.good()) return 1;
-        out.put(ch2);
-        if (!out.good()) return 1;
-        out.put(ch1);
-        if (!out.good()) return 1;
-    }
+    out << o1 << o2;
     out.close();
+
+    ifstream in("test");
+
+    if (!in) {
+        cout << "入力ファイルが開けません\n";
+        return 1;
+    }
+
+    coord o3(0, 0), o4(0, 0);
+    in >> o3 >> o4;
+    cout << o3 << o4;
+    in.close();
     return 0;
 }
