@@ -24,7 +24,7 @@ public:
     }
 };
 
-class derived2 : public base {
+class derived2 : public derived1 {
 public:
     void func()
     {
