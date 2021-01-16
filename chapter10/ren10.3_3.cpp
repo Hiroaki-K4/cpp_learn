@@ -8,16 +8,6 @@
 using namespace std;
 
 
-#include <iostream>
-#include <fstream>
-#include <iomanip>
-#include <cstdlib>
-#include <cstring>
-#include <cmath>
-#include <ctime>
-using namespace std;
-
-
 class base {
 public:
     virtual void func()
