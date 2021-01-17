@@ -115,11 +115,7 @@ int main()
 {
     list *p;
     queue q_ob;
-    // p = &q_ob;
-
-    // p->store(1);
-    // p->store(2);
-    // p->store(3);
+    
     q_ob + 1;
     q_ob + 2;
     q_ob + 3;
