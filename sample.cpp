@@ -8,28 +8,19 @@
 using namespace std;
 
 
-void Xhandler()
+double devide(double a, double b)
 {
     try {
-        throw "hello";
+        if (b == 0) throw -1;
+        else return a / b;
     }
-    catch (char const *) {
-        cout << "Xhandlerのchar*を捕獲\n";
-        throw ;
+    catch (int i)
+    {
+        cout << 
     }
 }
 
 int main()
 {
-    cout << "開始\n";
 
-    try {
-        Xhandler();
-    }
-    catch (char const *) {
-        cout << "mainのchar *を捕獲\n";
-    }
-    
-    cout << "終了" << endl;
-    return 0;
 }
