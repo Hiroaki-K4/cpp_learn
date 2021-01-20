@@ -22,5 +22,5 @@ double devide(double a, double b)
 
 int main()
 {
-
+    cout << "hahaha";
 }
