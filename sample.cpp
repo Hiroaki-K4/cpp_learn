@@ -11,27 +11,65 @@
 using namespace std;
 
 
+class Project {
+public:
+    char name[40];
+    int days_to_completion;
+    Project() {
+        strcpy(name, "");
+        days_to_completion = 0;
+    }
+    Project(char *n, int d) {
+        strcpy(name, n);
+        days_to_completion = d;
+    }
+    
+    void add_days(int i) {
+        days_to_completion += i;
+    }
+
+    void sub_days(int i) {
+        days_to_completion -= i;
+    }
+
+    bool completed() { return !days_to_completion; }
+
+    void report() {
+        cout << name << ": ";
+        cout << days_to_completion;
+        cout << "日(残り)\n";
+    }
+};
+
 int main()
 {
-    list<char> lst;
-    int i;
+    list<Project> proj, proj2;
 
-    for (i = 0; i < 10; i++) lst.push_back('A' + i);
+    proj.push_back(Project("コンパイラ", 35));
+    proj.push_back(Project("スプレッドシート", 190));
+    proj.push_back(Project("STL実装", 1000));
+    proj2.push_back(Project("データベース", 780));
+    proj2.push_back(Project("メールマージ", 50));
+    proj2.push_back(Project("COMオブジェクト", 300));
 
-    cout << "大きさ = " << lst.size() << endl;
+    proj.sort();
+    proj2.sort();
+    proj.merge(proj2);
 
-    list<char>::iterator p;
+    list<Project>::iterator p = proj.begin();
 
-    cout << "内容: ";
-    for (i = 0; i < lst.size(); i++) {
-        p = lst.begin();
-        cout << *p;
-        lst.pop_front();
-        lst.push_back(*p);
+    while (p != proj.end()) {
+        p->report();
+        p++;
     }
-    cout << endl;
-    if (!lst.empty())
-        cout << "リストは空ではない\n";
+
+    // p = proj.begin();
+    // p->add_days(10);
+
+    // do {
+    //     p->sub_days(5);
+    //     p->report();
+    // } while (!p->completed());
 
     return 0;
 }
