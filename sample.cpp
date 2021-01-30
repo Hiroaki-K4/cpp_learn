@@ -16,24 +16,9 @@ using namespace std;
 
 int main()
 {
-    list<string> l;
-    l.push_back("one");
-    l.push_back("two");
-    l.push_back("three");
-    l.push_back("four");
-    l.push_back("five");
-    l.push_back("six");
-    l.push_back("seven");
-    l.push_back("eight");
-    l.push_back("nine");
-    l.push_back("ten");
-    l.sort();
-    list<string>::iterator p;
-    p = l.begin();
-    while (p != l.end()) {
-        cout << *p << " ";
-        p++;
-    }
-    cout << endl;
+    string str;
+    cout << "文字列を入力してください: ";
+    cin >> str;
+    cout << str << endl;
     return 0;
 }
