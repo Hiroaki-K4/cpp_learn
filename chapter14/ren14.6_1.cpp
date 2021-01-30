@@ -13,10 +13,6 @@
 using namespace std;
 
 
-int xform(int i) {
-    return i * i;
-}
-
 int main()
 {
     vector<int> v;
@@ -34,6 +30,6 @@ int main()
     for (i = 0; i < v.size(); i++)
         cout << v[i] << " ";
     cout << endl;
-    
+
     return 0;
 }
